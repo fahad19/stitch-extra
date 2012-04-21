@@ -1,18 +1,19 @@
-{ "name": "stitch"
-, "description": "Stitch your CommonJS modules together for the browser"
+{ "name": "stitch-extra"
+, "description": "Stitch your CommonJS modules together for the browser [with extra features]"
 , "contributors":
   [ "Josh Peek"
   , "Sam Stephenson"
+  , "Fahad Ibnay Heylaal"
   ]
-, "version": "0.3.3"
+, "version": "0.3.4"
 , "licenses": [
   { "type": "MIT"
-  , "url": "http://github.com/sstephenson/stitch/raw/master/LICENSE"
+  , "url": "http://github.com/fahad19/stitch-extra/raw/master/LICENSE"
   }]
 , "main": "./lib/stitch"
 , "repository":
   { "type": "git"
-  , "url": "http://github.com/sstephenson/stitch.git"
+  , "url": "http://github.com/fahad19/stitch-extra.git"
   }
 , "dependencies":
   { "async": ">=0.1.15"
