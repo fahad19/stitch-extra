@@ -36,7 +36,7 @@ Or build it to a file:
     })
 
 
-## What\'s extra?
+## What's extra?
 
 This is a fork from @sstephenson's [stitch](https://github.com/sstephenson/stitch).
 
