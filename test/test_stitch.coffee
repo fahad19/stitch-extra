@@ -22,6 +22,13 @@ additionalOptions =
   paths:      [addlFixtures]
 additionalPackage = stitch.createPackage additionalOptions
 
+listOptions =
+  identifier: "testRequire"
+  paths:      [addlFixtures]
+  listModules: true
+  listModulesIdentifier: 'modules'
+listPackage = stitch.createPackage listOptions
+
 alternateOptions =
   paths:      [altFixtures]
 alternatePackage = stitch.createPackage alternateOptions
@@ -161,7 +168,7 @@ module.exports =
     defaultPackage.compile (err, sources) ->
       test.ok !err
       testRequire = load sources
-      test.ok typeof testRequire is "function"
+      test.ok(typeof testRequire is "function")
       test.done()
 
   "compile module with custom exports": (test) ->
@@ -330,6 +337,14 @@ module.exports =
     ignorePackage.getFilesInTree ignoreFixtures, (err, files) ->
       test.ok !err
       test.same ignoreFixtureCount, files.length
+      test.done()
+
+  "list module names": (test) ->
+    test.expect 2
+    listPackage.compile (err, sources) ->
+      test.ok !err
+      testRequire = load sources
+      test.ok testRequire("modules")
       test.done()
 
 if stitch.compilers.eco

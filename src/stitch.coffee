@@ -37,6 +37,9 @@ exports.Package = class Package
     @compilers    = _.extend {}, compilers, config.compilers
     @ignore       = config.ignore ? []
 
+    @listModules           = config.listModules ? false
+    @listModulesIdentifier = config.listModulesIdentifier ? 'modules'
+
     @cache        = config.cache ? true
     @mtimeCache   = {}
     @compileCache = {}
@@ -112,10 +115,20 @@ exports.Package = class Package
       """
 
       index = 0
+      names = []
       for name, {filename, source} of sources
+        stringifiedName = JSON.stringify name
+        names.push stringifiedName.replace /\"/g, ''
+
         result += if index++ is 0 then "" else ", "
-        result += JSON.stringify name
+        result += stringifiedName
         result += ": function(exports, require, module) {#{source}}"
+
+      if @listModules
+        source = JSON.stringify names
+        result += if index++ is 0 then "" else ", "
+        result += @listModulesIdentifier
+        result += ": function(exports, require, module) {module.exports = #{source};}"
 
       result += """
         });\n
