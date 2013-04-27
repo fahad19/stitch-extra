@@ -26,7 +26,7 @@ listOptions =
   identifier: "testRequire"
   paths:      [addlFixtures]
   listModules: true
-  listModulesIdentifier: 'modules'
+  listModulesId: 'modules'
 listPackage = stitch.createPackage listOptions
 
 alternateOptions =

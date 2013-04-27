@@ -37,8 +37,8 @@ exports.Package = class Package
     @compilers    = _.extend {}, compilers, config.compilers
     @ignore       = config.ignore ? []
 
-    @listModules           = config.listModules ? false
-    @listModulesIdentifier = config.listModulesIdentifier ? 'modules'
+    @listModules   = config.listModules ? false
+    @listModulesId = config.listModulesId ? 'modules'
 
     @cache        = config.cache ? true
     @mtimeCache   = {}
@@ -127,7 +127,7 @@ exports.Package = class Package
       if @listModules
         source = JSON.stringify names
         result += if index++ is 0 then "" else ", "
-        result += @listModulesIdentifier
+        result += JSON.stringify @listModulesId
         result += ": function(exports, require, module) {module.exports = #{source};}"
 
       result += """
